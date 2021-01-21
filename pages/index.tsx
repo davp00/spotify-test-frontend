@@ -1,9 +1,10 @@
 import { NextPage } from 'next';
+import AppLayout from '../components/Layout';
 
 const IndexPage: NextPage = () => (
-  <div>
+  <AppLayout title="Lista de Canciones">
     <h1>Hello World from Next.js</h1>
-  </div>
+  </AppLayout>
 );
 
 export default IndexPage;
