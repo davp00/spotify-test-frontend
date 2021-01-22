@@ -5,6 +5,10 @@ describe('Index Page', () => {
     return false;
   });
 
+  Cypress.config('responseTimeout', 65000);
+
+  const value = 'What you know';
+
   context('1280x800 resolution', () => {
     beforeEach(() => {
       cy.viewport(1280, 800);
@@ -21,7 +25,6 @@ describe('Index Page', () => {
         });
 
         it('should search tracks with limit 20', () => {
-          const value = 'What you know';
           const limit = '20';
 
           cy.get('[data-cy=query-input]')
@@ -65,24 +68,26 @@ describe('Index Page', () => {
       });
 
       describe('Item Actions', () => {
-        function testHrefLink(dataCy) {
-          cy.get(`[data-cy=${dataCy}`).then(($links) => {
-            cy.request($links[0].getAttribute('href'))
-              .its('status')
-              .should('be.eq', 200);
-          });
+        function testHrefLink(dataCy, type) {
+          cy.get(`[data-cy=${dataCy}`)
+            .should('have.attr', 'target', '_blank')
+            .should('have.attr', 'rel', 'noreferrer')
+            .should('have.attr', 'href')
+            .then((href) => {
+              expect(href).contains(type);
+            });
         }
 
         it('should has spotify track link', () => {
-          testHrefLink('btn-track-spotify-link');
+          testHrefLink('btn-track-spotify-link', 'track');
         });
 
         it('should has spotify album link', () => {
-          testHrefLink('btn-album-spotify-link');
+          testHrefLink('btn-album-spotify-link', 'album');
         });
 
         it('should has spotify artist link', () => {
-          testHrefLink('btn-artist-spotify-link');
+          testHrefLink('btn-artist-spotify-link', 'artist');
         });
 
         it('should go to app track info', () => {
@@ -91,6 +96,29 @@ describe('Index Page', () => {
             cy.url().should('include', '/track/');
           });
         });
+      });
+    });
+  });
+
+  context('Iphone 5', () => {
+    beforeEach(() => {
+      cy.viewport(320, 568);
+    });
+
+    describe('When you visit home page', () => {
+      it('should visit home page', () => {
+        cy.visit('/');
+      });
+
+      it('should scroll to right', () => {
+        cy.get('[data-cy=query-input]').type(value).should('have.value', value);
+        cy.get('[data-cy=search-button]').click();
+
+        cy.wait(500);
+
+        cy.get('[data-cy=track-list-table]')
+          .find('div.ant-table-content')
+          .scrollTo('right');
       });
     });
   });

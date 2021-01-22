@@ -92,6 +92,7 @@ const AppList = (): JSX.Element => {
   return (
     <div className="mt-4 mb-5">
       <Table
+        data-cy="track-list-table"
         rowKey={(item) => item.id}
         columns={columns}
         dataSource={data?.items}

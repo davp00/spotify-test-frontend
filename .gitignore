@@ -32,4 +32,10 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# ides
 /.idea
+
+# app
+/cypress/videos
+/cypress/screenshots

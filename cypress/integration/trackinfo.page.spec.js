@@ -21,11 +21,13 @@ describe('Track/[id] Page', () => {
       });
 
       it('should go to spotify artist profile', function () {
-        cy.get('[data-cy=btn-artist-spotify-link]').then(($links) => {
-          cy.request($links[0].getAttribute('href'))
-            .its('status')
-            .should('be.eq', 200);
-        });
+        cy.get('[data-cy=btn-artist-spotify-link')
+          .should('have.attr', 'target', '_blank')
+          .should('have.attr', 'rel', 'noreferrer')
+          .should('have.attr', 'href')
+          .then((href) => {
+            expect(href).contains('artist');
+          });
       });
     });
 

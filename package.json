@@ -10,8 +10,7 @@
     "lint": "eslint --ext js,jsx,ts,tsx --fix",
     "cy:run": "cypress open",
     "cypress:open": "cypress open",
-    "cypress:run": "cypress run",
-    "test:e2e": "start-server-and-test :3000 cy:run"
+    "cypress:run": "cypress run"
   },
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
