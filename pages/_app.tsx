@@ -1,6 +1,6 @@
 import React from 'react';
 import App from 'next/app';
-import 'antd/dist/antd.css';
+import '../styles/main.less';
 
 class MyApp extends App {
   render(): JSX.Element {

@@ -10,6 +10,8 @@ class AppDocument extends Document {
             type="image/png"
             href="https://cdn4.iconfinder.com/data/icons/social-media-and-logos-11/32/Logo_Spotify-512.png"
           />
+          <link rel="stylesheet" href="/css/utilities.min.css" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
         </Head>
         <body>
           <Main />
