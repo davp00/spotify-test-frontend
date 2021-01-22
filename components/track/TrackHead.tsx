@@ -18,11 +18,15 @@ const TrackHead: FunctionComponent<TrackHeadProps> = ({
   artists,
 }) => (
   <div className="text-center mt-4">
-    <Avatar size={album.images[1].height - 150} src={album.images[1].url} />
-    <Title level={1} className="mt-2">
+    <Avatar
+      size={album.images[1].height - 150}
+      src={album.images[1].url}
+      data-cy="album-cover-picture"
+    />
+    <Title level={1} className="mt-2" data-cy="head-track-name">
       {name}
     </Title>
-    <Title level={3} className="artist-name">
+    <Title level={3} className="artist-name" data-cy="head-track-artists">
       <ArtistsLinks artists={artists} />
     </Title>
   </div>

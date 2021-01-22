@@ -25,7 +25,12 @@ const columns: any[] = [
     key: 'name',
     render(item: Track): JSX.Element {
       return (
-        <a href={item.album.spotify} target="_blank" rel="noreferrer">
+        <a
+          href={item.album.spotify}
+          target="_blank"
+          rel="noreferrer"
+          data-cy="btn-album-spotify-link"
+        >
           <p>{item.album.name}</p>
         </a>
       );
@@ -37,7 +42,7 @@ const columns: any[] = [
     key: 'artists',
     render(item: Track): JSX.Element {
       return (
-        <span>
+        <span data-cy="artist-row-links">
           <ArtistsLinks artists={item.artists} />
         </span>
       );
@@ -61,9 +66,18 @@ const columns: any[] = [
               query: { id: item.id },
             }}
           >
-            <Button type="text" icon={<InfoCircleOutlined />} />
+            <Button
+              data-cy="btn-app-track-info"
+              type="text"
+              icon={<InfoCircleOutlined />}
+            />
           </Link>
-          <a href={item.spotify} target="_blank" rel="noreferrer">
+          <a
+            href={item.spotify}
+            target="_blank"
+            rel="noreferrer"
+            data-cy="btn-track-spotify-link"
+          >
             <Button type="link" icon={<PlayCircleOutlined />} />
           </a>
         </span>

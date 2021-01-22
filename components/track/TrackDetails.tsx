@@ -21,7 +21,9 @@ const TrackDetails: FunctionComponent<TrackDetailsProps> = ({
   <>
     <Row>
       <Col md={12} sm={24} xs={24}>
-        <Title level={5}>Álbum: {album.name}</Title>
+        <Title level={5} data-cy="track-details-album">
+          Álbum: {album.name}
+        </Title>
       </Col>
       <Col md={12} sm={24} xs={24}>
         <Title level={5}>Fecha de Realización: {album.release_date}</Title>
@@ -46,7 +48,7 @@ const TrackDetails: FunctionComponent<TrackDetailsProps> = ({
     <div className={'mt-4'}>
       <Title level={2}>Muestra</Title>
       {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
-      <audio controls>
+      <audio controls data-cy="track-details-preview">
         <source src={preview_url} type="audio/mp3" />
       </audio>
     </div>

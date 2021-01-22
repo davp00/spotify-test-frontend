@@ -41,19 +41,30 @@ const Search = (): JSX.Element => {
         <Row justify="center" className="p-md-2">
           <Col md={10} sm={18} xs={24}>
             <Input
+              data-cy="query-input"
               placeholder="Canción a buscar"
               ref={queryInput as any}
               name="q"
             />
           </Col>
           <Col className="ml-md-2 limit-input" md={2} sm={4} xs={24}>
-            <Input placeholder="Limite" name="limit" ref={limitInput as any} />
+            <Input
+              placeholder="Limite"
+              name="limit"
+              data-cy="limit-input"
+              ref={limitInput as any}
+            />
           </Col>
         </Row>
         <Row justify="center" className="mt-3">
           <Col md={12} sm={22} xs={24}>
             <div>
-              <Button type="primary" block htmlType="submit">
+              <Button
+                type="primary"
+                block
+                htmlType="submit"
+                data-cy="search-button"
+              >
                 Buscar
               </Button>
             </div>

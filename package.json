@@ -7,7 +7,11 @@
     "start": "next start",
     "start:prod": "npm run build && npm run start",
     "type-check": "tsc",
-    "lint": "eslint --ext js,jsx,ts,tsx --fix"
+    "lint": "eslint --ext js,jsx,ts,tsx --fix",
+    "cy:run": "cypress open",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "test:e2e": "start-server-and-test :3000 cy:run"
   },
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
@@ -26,9 +30,11 @@
     "@types/react-dom": "^17.0.0",
     "@typescript-eslint/eslint-plugin": "^4.14.0",
     "@typescript-eslint/parser": "^4.14.0",
+    "cypress": "^6.3.0",
     "eslint": "^7.18.0",
     "eslint-config-prettier": "^7.2.0",
     "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-cypress": "^2.11.2",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-node": "^11.1.0",

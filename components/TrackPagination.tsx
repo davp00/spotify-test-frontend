@@ -18,10 +18,10 @@ const TrackPagination = (): JSX.Element => {
   });
 
   useEffect(() => {
-    let nPages = (data?.total || 0) / (limit || 10);
+    let nPages = data?.total || 0;
 
-    if (nPages > 200) nPages = 2000;
-    console.log(nPages);
+    if (nPages > 2000) nPages = 2000;
+
     setState({
       nPages: nPages % 1 === 0 ? nPages : Math.trunc(nPages) + 1,
     });
@@ -53,6 +53,8 @@ const TrackPagination = (): JSX.Element => {
   return (
     <div className="mt-3 mb-5 float-right">
       <Pagination
+        data-cy="ant-pagination"
+        data-page={page}
         defaultCurrent={1}
         total={state.nPages}
         current={page}

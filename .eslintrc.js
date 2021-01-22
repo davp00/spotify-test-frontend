@@ -2,7 +2,8 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
-    node: true
+    node: true,
+    mocha: true,
   },
   extends: [
     'plugin:react/recommended',
@@ -24,7 +25,8 @@ module.exports = {
   },
   plugins: [
     'react',
-    '@typescript-eslint'
+    '@typescript-eslint',
+    'cypress'
   ],
   rules: {
     'react/prop-types': 'off',
@@ -32,5 +34,10 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': ['error'],
     '@typescript-eslint/no-explicit-any': 'off',
     'prettier/prettier': ['error', {}, { usePrettierrc: true }], // Includes .prettierrc.js rules
+    'cypress/no-assigning-return-values': 'error',
+    'cypress/no-unnecessary-waiting': 'error',
+    'cypress/assertion-before-screenshot': 'warn',
+    'cypress/no-force': 'warn',
+    'cypress/no-async-tests': 'error'
   }
 }

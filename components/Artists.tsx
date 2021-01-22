@@ -15,6 +15,7 @@ const ArtistsLinks: FunctionComponent<ArtistsProps> = ({ artists }) => {
               href={item.external_urls.spotify}
               target="_blank"
               rel="noreferrer"
+              data-cy="btn-artist-spotify-link"
             >
               {item.name}
             </a>
