@@ -4,31 +4,35 @@ import { notification, Pagination } from 'antd';
 import axios from 'axios';
 
 const TrackPagination = (): JSX.Element => {
-  const { data, limit, query, setTrackList, setLoading } = useContext(
-    MainContext
-  );
+  const {
+    data,
+    limit,
+    query,
+    setTrackList,
+    setLoading,
+    setPage,
+    page,
+  } = useContext(MainContext);
   const [state, setState] = useState({
     nPages: 0,
-    page: 1,
   });
 
   useEffect(() => {
     const nPages = (data?.total || 0) / (limit || 10);
     setState({
-      ...state,
       nPages: nPages % 1 === 0 ? nPages : Math.trunc(nPages) + 1,
     });
   }, [data?.total, limit]);
 
   const handleOnChange = (page: number) => {
-    setState({ ...state, page });
+    setPage?.(page);
 
     setLoading?.(true);
     window.scrollTo(0, 0);
 
     axios
       .get(
-        `${process.env.NEXT_PUBLIC_URL}/search?q=${query}&limit=${limit}&page=${state.page}`
+        `${process.env.NEXT_PUBLIC_URL}/search?q=${query}&limit=${limit}&page=${page}`
       )
       .then(({ data }) => {
         if (!data.status) {
@@ -48,7 +52,7 @@ const TrackPagination = (): JSX.Element => {
       <Pagination
         defaultCurrent={1}
         total={state.nPages}
-        current={state.page}
+        current={page}
         onChange={handleOnChange}
       />
     </div>

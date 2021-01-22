@@ -9,6 +9,7 @@ export interface MainContextProps {
   limit: number;
   setTrackList: (data: TrackList, limit?: number, query?: string) => void;
   setLoading: (newValue: boolean) => void;
+  setPage: (newValue: number) => void;
 }
 
 export const MainContext = createContext<
@@ -17,7 +18,7 @@ export const MainContext = createContext<
 
 export class MainContextProvider extends Component<any, MainContextProps> {
   state = {
-    page: 0,
+    page: 1,
     limit: 0,
     query: '',
     loading: false,
@@ -27,7 +28,12 @@ export class MainContextProvider extends Component<any, MainContextProps> {
     },
     setTrackList: this.setTrackList.bind(this),
     setLoading: this.setLoading.bind(this),
+    setPage: this.setPage.bind(this),
   };
+
+  setPage(newValue: number): void {
+    this.setState({ page: newValue });
+  }
 
   setLoading(newValue: boolean): void {
     this.setState({ loading: newValue });

@@ -6,7 +6,7 @@ export interface Artist {
   id: string;
   name: string;
   type: string;
-  externals_urls: TrackExternalUrl[];
+  external_urls: TrackExternalUrl;
 }
 
 export interface TrackImage {
@@ -21,6 +21,9 @@ export interface Album {
   spotify: string;
   type: string;
   images: TrackImage[];
+  release_date?: string;
+  explicit?: boolean;
+  available_markets?: string[];
 }
 
 export interface Track {
@@ -29,6 +32,7 @@ export interface Track {
   duration: string;
   name: string;
   spotify: string;
+  artists: Artist[];
 }
 
 export interface TrackList {

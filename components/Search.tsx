@@ -8,7 +8,7 @@ const loadingKey = 'updatable';
 const Search = (): JSX.Element => {
   const queryInput = useRef<Input | null>();
   const limitInput = useRef<Input | null>();
-  const { setTrackList } = useContext(MainContext);
+  const { setTrackList, setPage } = useContext(MainContext);
 
   const handleSubmit = () => {
     const q = queryInput.current?.state.value;
@@ -21,6 +21,7 @@ const Search = (): JSX.Element => {
       .then(({ data }) => {
         if (!data.status) {
           setTrackList?.(data, limit, q);
+          setPage?.(1);
         } else {
           notification.error({
             message: 'Error',

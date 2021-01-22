@@ -5,6 +5,7 @@ import { Track } from '../interfaces/track.list';
 import { InfoCircleOutlined, PlayCircleOutlined } from '@ant-design/icons';
 import Link from 'next/link';
 import TrackPagination from './TrackPagination';
+import ArtistsLinks from './Artists';
 
 const columns: any[] = [
   {
@@ -23,7 +24,11 @@ const columns: any[] = [
     title: 'Album',
     key: 'name',
     render(item: Track): JSX.Element {
-      return <p>{item.album.name}</p>;
+      return (
+        <a href={item.album.spotify} target="_blank" rel="noreferrer">
+          <p>{item.album.name}</p>
+        </a>
+      );
     },
     responsive: ['md'],
   },
@@ -33,14 +38,7 @@ const columns: any[] = [
     render(item: Track): JSX.Element {
       return (
         <span>
-          {item.album.artists.map((artist, index) => {
-            return (
-              <span key={artist.id}>
-                {artist.name}
-                {index !== item.album.artists.length - 1 && ', '}
-              </span>
-            );
-          })}
+          <ArtistsLinks artists={item.artists} />
         </span>
       );
     },
