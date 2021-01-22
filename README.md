@@ -41,3 +41,8 @@ npm run cypress:open
 # runs all cypress test
 npm run cypress:run
 ```
+
+## Stay in touch
+
+- Author - [Daniel Viloria](https://github.com/davp00)
+- LinkedIn - [https://www.linkedin.com/in/daniel-viloria-perez-17434016b/](https://www.linkedin.com/in/daniel-viloria-perez-17434016b/)
