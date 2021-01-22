@@ -5,6 +5,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
+    "start:prod": "npm run build && npm run start",
     "type-check": "tsc",
     "lint": "eslint --ext js,jsx,ts,tsx --fix"
   },

@@ -18,7 +18,10 @@ const TrackPagination = (): JSX.Element => {
   });
 
   useEffect(() => {
-    const nPages = (data?.total || 0) / (limit || 10);
+    let nPages = (data?.total || 0) / (limit || 10);
+
+    if (nPages > 200) nPages = 2000;
+    console.log(nPages);
     setState({
       nPages: nPages % 1 === 0 ? nPages : Math.trunc(nPages) + 1,
     });
@@ -53,6 +56,7 @@ const TrackPagination = (): JSX.Element => {
         defaultCurrent={1}
         total={state.nPages}
         current={page}
+        showSizeChanger={false}
         onChange={handleOnChange}
       />
     </div>
