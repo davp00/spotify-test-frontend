@@ -1,4 +1,5 @@
 # Spotify Test Frontend
+you can try a live demo in [Live Preview](http://165.227.76.8:3000/)
 
 ## Installation
 
@@ -10,7 +11,7 @@ npm install --legacy-peer-deps
 ```
 
 ## Environment
-Look at the .env example, then create .env file
+Look at the .env example, then create .env file(Note: note: do not place / at the end)
 ```dotenv
 NEXT_PUBLIC_URL=http://your-host:your-port
 ```
@@ -32,7 +33,7 @@ npm run start:prod
 ```
 
 ## Test
-Recommended running <b>npm run start:prod</b> before
+Recommended running <b>npm run start:prod</b> before.
 ```bash
 # runs cypress environment
 npm run cypress:open
